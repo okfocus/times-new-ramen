@@ -78,10 +78,10 @@ function go() {
   else if (index == 15) {
     var br = document.createElement("br")
     typer.insertBefore(br, caret)
-    setTimeout(go, randint(50,80))
+    setTimeout(go, randint(150,200))
   }
   else if (index < message.length-1) {
-    setTimeout(go, randint(50,100))
+    setTimeout(go, randint(150,200))
   }
   else {
     typer.removeChild(caret)
