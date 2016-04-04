@@ -14,28 +14,27 @@
 }
 html,body {
   margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'TimesNewRamen-Regular';
-  font-size: 6vw;
+  font-size: 25vh;
+  color: white;
+  background: blue;
+  overflow: hidden;
 }
 #typer {
-  position: absolute; top: 50%; left: 50%;
-  transform: translateZ(0) translateX(-50%) translateY(-50%);
-  width: 95vw;
+  width: 100%;
   text-align: center;
-}
-#cursor {
-  width: 1px; background: black;
+  padding: 30px 25px;
 }
 #caret {
   -webkit-animation: blink 800s infinite;
   animation: blink 800ms infinite;
-  border-left: solid 1px #000;
+  border-left: solid 3px white;
   margin-left: 10px;
   position: relative;
   height: 4vw;
   top: 3vw;
   left: 1vw;
   display: inline-block;
-  transform: scaleX(1) scaleY(2.7) translateY(-29%);
+  transform: scaleX(1) scaleY(4.1) translateY(-29%);
 }
 
 @-webkit-keyframes blink {
@@ -56,7 +55,7 @@ html,body {
 <div id="typer"><div id="caret"></div></div>
 </body>
 <script>
-var message = "Times New Ramen is the hottest font on the Internet!"
+var message = "Times New Ramen."
 var index = -1
 function randint(a,b){ return (a + Math.random() * (b-a))|0 }
 function go() {
@@ -64,23 +63,8 @@ function go() {
   var c = message[++index]
   if (c == " ") c = " "
   el.innerHTML = c
-  if (index != 15) { typer.insertBefore(el, caret) }
-  
-  if (index < 14) {
-    setTimeout(go, randint(150,200))
-  }
-  else if (index < 14) {
-    setTimeout(go, randint(70,150))
-  }
-  else if (index == 14) {
-    setTimeout(go, 500)
-  }
-  else if (index == 15) {
-    var br = document.createElement("br")
-    typer.insertBefore(br, caret)
-    setTimeout(go, randint(150,200))
-  }
-  else if (index < message.length-1) {
+  typer.insertBefore(el, caret)
+  if (index < message.length-1) {
     setTimeout(go, randint(150,200))
   }
   else {
@@ -88,6 +72,6 @@ function go() {
   }
 }
 
-go()
+setTimeout(go, 200)
 </script>
 </html>
